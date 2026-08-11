@@ -21,6 +21,15 @@ export default async function AdminDashboardPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const { count: projectCount } = await supabase
+    .from("projects")
+    .select("id", { count: "exact", head: true });
+
+  const { count: unreadCount } = await supabase
+    .from("messages")
+    .select("id", { count: "exact", head: true })
+    .eq("is_read", false);
+
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 px-6 py-10">
       <div className="flex items-center justify-between">
@@ -31,6 +40,24 @@ export default async function AdminDashboardPage() {
         Masuk sebagai <span className="font-medium">{user?.email}</span>.
         Kelola konten di menu berikut.
       </p>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="rounded-lg border p-4">
+          <p className="text-sm text-muted-foreground">Total Project</p>
+          <p className="mt-1 text-3xl font-bold tracking-tight">
+            {projectCount ?? 0}
+          </p>
+        </div>
+        <div className="rounded-lg border p-4">
+          <p className="text-sm text-muted-foreground">
+            Pesan Belum Dibaca
+          </p>
+          <p className="mt-1 text-3xl font-bold tracking-tight">
+            {unreadCount ?? 0}
+          </p>
+        </div>
+      </div>
+
       <div className="grid gap-3 sm:grid-cols-2">
         <Button variant="outline" render={<Link href="/admin/projects" />}>
           Kelola Projects
@@ -46,6 +73,9 @@ export default async function AdminDashboardPage() {
         </Button>
         <Button variant="outline" render={<Link href="/admin/profile" />}>
           Edit Profil
+        </Button>
+        <Button variant="outline" render={<Link href="/admin/messages" />}>
+          Inbox Pesan
         </Button>
       </div>
     </main>

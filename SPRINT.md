@@ -82,9 +82,9 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** admin bisa pantau pesan masuk dan ringkasan.
 
-- [ ] List messages (nama, email, isi, tanggal, status baca)
-- [ ] Tandai sudah dibaca / hapus pesan
-- [ ] Dashboard menampilkan jumlah project & jumlah pesan belum dibaca (data real dari DB)
+- [x] List messages (nama, email, isi, tanggal, status baca)
+- [x] Tandai sudah dibaca / hapus pesan
+- [x] Dashboard menampilkan jumlah project & jumlah pesan belum dibaca (data real dari DB)
 
 **Definition of Done:** dashboard menampilkan angka real-time dari database, inbox berfungsi penuh.
 
