@@ -1,21 +1,31 @@
 "use client";
 
 import { useActionState } from "react";
-import { deleteProject } from "@/lib/actions/projects";
 import { Button } from "@/components/ui/button";
 
-export function ProjectDeleteButton({ id }: { id: string }) {
-  const [state, action, pending] = useActionState(deleteProject, null);
+type DeleteAction = (
+  prev: unknown,
+  formData: FormData
+) => Promise<{ error?: string } | null>;
+
+export function DeleteButton({
+  action,
+  id,
+  label = "Hapus",
+  confirmText = "Hapus item ini? Tindakan tidak dapat dibatalkan.",
+}: {
+  action: DeleteAction;
+  id: string;
+  label?: string;
+  confirmText?: string;
+}) {
+  const [state, formAction, pending] = useActionState(action, null);
 
   return (
     <form
-      action={action}
+      action={formAction}
       onSubmit={(e) => {
-        if (
-          !window.confirm(
-            "Hapus project ini? Tindakan tidak dapat dibatalkan."
-          )
-        ) {
+        if (!window.confirm(confirmText)) {
           e.preventDefault();
         }
       }}
@@ -27,7 +37,7 @@ export function ProjectDeleteButton({ id }: { id: string }) {
         size="sm"
         disabled={pending}
       >
-        {pending ? "..." : "Hapus"}
+        {pending ? "..." : label}
       </Button>
       {state?.error && (
         <p className="mt-1 text-sm text-destructive">{state.error}</p>

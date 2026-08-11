@@ -35,6 +35,18 @@ export default async function AdminDashboardPage() {
         <Button variant="outline" render={<Link href="/admin/projects" />}>
           Kelola Projects
         </Button>
+        <Button variant="outline" render={<Link href="/admin/skills" />}>
+          Kelola Skills
+        </Button>
+        <Button variant="outline" render={<Link href="/admin/experiences" />}>
+          Kelola Pengalaman
+        </Button>
+        <Button variant="outline" render={<Link href="/admin/educations" />}>
+          Kelola Pendidikan
+        </Button>
+        <Button variant="outline" render={<Link href="/admin/profile" />}>
+          Edit Profil
+        </Button>
       </div>
     </main>
   );

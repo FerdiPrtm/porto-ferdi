@@ -1,16 +1,16 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/supabase/guard";
-import { ProjectForm } from "@/components/admin/project-form";
+import { EducationForm } from "@/components/admin/education-form";
 
 export const metadata = {
-  title: "Edit Project",
+  title: "Edit Pendidikan",
   robots: { index: false, follow: false },
 };
 
-export default async function EditProjectPage({
+export default async function EditEducationPage({
   params,
-}: PageProps<"/admin/projects/[id]/edit">) {
+}: PageProps<"/admin/educations/[id]/edit">) {
   const { id } = await params;
   const supabase = await createClient();
 
@@ -18,20 +18,20 @@ export default async function EditProjectPage({
     redirect("/admin/login");
   }
 
-  const { data: project } = await supabase
-    .from("projects")
+  const { data: education } = await supabase
+    .from("educations")
     .select("*")
     .eq("id", id)
     .single();
 
-  if (!project) {
+  if (!education) {
     notFound();
   }
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-6 py-10">
-      <h1 className="text-2xl font-bold tracking-tight">Edit Project</h1>
-      <ProjectForm project={project} />
+      <h1 className="text-2xl font-bold tracking-tight">Edit Pendidikan</h1>
+      <EducationForm education={education} />
     </main>
   );
 }

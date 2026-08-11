@@ -2,17 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
-import { isAdmin } from "@/lib/supabase/guard";
+import { requireAdmin } from "@/lib/supabase/guard";
 import { projectSchema, type ProjectInput } from "@/lib/validations/project";
-
-async function requireAdmin() {
-  const supabase = await createClient();
-  if (!(await isAdmin(supabase))) {
-    throw new Error("Unauthorized: hanya admin yang bisa mengelola project.");
-  }
-  return supabase;
-}
 
 export async function createProject(
   input: ProjectInput

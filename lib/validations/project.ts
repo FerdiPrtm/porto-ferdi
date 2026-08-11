@@ -1,16 +1,5 @@
 import { z } from "zod";
-
-const urlOrEmpty = (message: string) =>
-  z.preprocess(
-    (v) => (typeof v === "string" && v.trim() === "" ? undefined : v),
-    z.string().url(message).optional()
-  );
-
-const textOrEmpty = (max: number) =>
-  z.preprocess(
-    (v) => (typeof v === "string" && v.trim() === "" ? undefined : v),
-    z.string().max(max).optional()
-  );
+import { textOrEmpty, urlOrEmpty } from "@/lib/validations/helpers";
 
 export const projectSchema = z.object({
   title: z

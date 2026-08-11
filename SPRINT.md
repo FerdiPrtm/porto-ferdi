@@ -69,10 +69,10 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** sisa CRUD konten selesai.
 
-- [ ] CRUD Skills (nama, kategori, level, icon)
-- [ ] CRUD Experiences (title, company, deskripsi, tanggal)
-- [ ] CRUD Educations (school, degree, tanggal)
-- [ ] Form edit Profile (bio, avatar, cv upload, social links)
+- [x] CRUD Skills (nama, kategori, level, icon)
+- [x] CRUD Experiences (title, company, deskripsi, tanggal)
+- [x] CRUD Educations (school, degree, tanggal)
+- [x] Form edit Profile (bio, avatar, cv upload, social links)
 
 **Definition of Done:** semua entity di PRD section 6 (kecuali `messages`) bisa dikelola penuh dari admin panel.
 
