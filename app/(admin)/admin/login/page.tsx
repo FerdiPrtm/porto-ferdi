@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isAdmin } from "@/lib/supabase/guard";
 import { LoginForm } from "@/components/admin/login-form";
 
 export const metadata = {
@@ -9,11 +10,8 @@ export const metadata = {
 
 export default async function AdminLoginPage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (user) {
+  if (await isAdmin(supabase)) {
     redirect("/admin/dashboard");
   }
 

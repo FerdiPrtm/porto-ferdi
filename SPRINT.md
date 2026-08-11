@@ -54,12 +54,12 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** admin bisa kelola project sepenuhnya.
 
-- [ ] Zod schema untuk `projects` (`lib/validations/project.ts`)
-- [ ] List projects di admin (tabel + tombol edit/hapus)
-- [ ] Form tambah project (termasuk upload gambar ke Storage)
-- [ ] Form edit project
-- [ ] Delete project (dengan konfirmasi)
-- [ ] Validasi client (React Hook Form) & server (Server Action) pakai schema yang sama
+- [x] Zod schema untuk `projects` (`lib/validations/project.ts`)
+- [x] List projects di admin (tabel + tombol edit/hapus)
+- [x] Form tambah project (termasuk upload gambar ke Storage)
+- [x] Form edit project
+- [x] Delete project (dengan konfirmasi)
+- [x] Validasi client (React Hook Form) & server (Server Action) pakai schema yang sama
 
 **Definition of Done:** admin bisa create/read/update/delete project end-to-end, gambar tersimpan di Storage, validasi jalan di kedua sisi.
 
