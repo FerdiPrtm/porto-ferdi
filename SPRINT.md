@@ -40,11 +40,11 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** admin bisa login, route `/admin/*` terproteksi.
 
-- [ ] Halaman `/admin/login`
-- [ ] Server action untuk sign in via Supabase Auth
-- [ ] `proxy.ts` (konvensi Next 16, pengganti `middleware.ts`) redirect ke `/admin/login` jika belum login dan akses `/admin/*`
-- [ ] Halaman `/admin/dashboard` kosong (placeholder) sebagai target redirect setelah login
-- [ ] Tombol logout
+- [x] Halaman `/admin/login`
+- [x] Server action untuk sign in via Supabase Auth
+- [x] `proxy.ts` (konvensi Next 16, pengganti `middleware.ts`) redirect ke `/admin/login` jika belum login dan akses `/admin/*`
+- [x] Halaman `/admin/dashboard` kosong (placeholder) sebagai target redirect setelah login
+- [x] Tombol logout
 
 **Definition of Done:** akses `/admin/dashboard` tanpa login redirect ke login; setelah login berhasil masuk dashboard; session persist saat refresh.
 

@@ -36,8 +36,11 @@ export async function updateSession(request: NextRequest) {
     },
   });
 
-  // Memastikan session selalu fresh (refresh token jika hampir kadaluarsa)
-  await supabase.auth.getUser();
+  // Mengembalikan user untuk keperluan otorisasi di proxy, sekaligus
+  // memastikan session selalu fresh (refresh token jika hampir kadaluarsa).
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  return supabaseResponse;
+  return { response: supabaseResponse, user };
 }
