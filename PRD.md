@@ -58,7 +58,7 @@ Website portofolio pribadi dengan dua bagian:
 ```sql
 -- profile (single row, data pemilik)
 profile (
-  id uuid primary key,
+  id uuid primary key references auth.users (id) on delete cascade,
   full_name text,
   tagline text,
   bio text,
@@ -66,6 +66,8 @@ profile (
   cv_url text,
   email text,
   social_links jsonb, -- {github, linkedin, twitter, ...}
+  is_admin boolean default false, -- penanda satu akun admin
+  singleton boolean, -- dipaksa hanya 1 baris via unique constraint
   updated_at timestamptz
 )
 
@@ -90,7 +92,7 @@ skills (
   name text not null,
   category text, -- e.g. "Frontend", "Backend", "Tools"
   level smallint, -- 1-5
-  icon text,
+  icon text, -- nama icon (mis. dari library lucide)
   sort_order int default 0
 )
 
@@ -129,9 +131,9 @@ messages (
 ## 7. Row Level Security (RLS)
 
 - Semua tabel: **SELECT** terbuka untuk publik (anon).
-- Semua tabel kecuali `messages`: **INSERT/UPDATE/DELETE** hanya untuk role `authenticated` yang merupakan admin (dicek via `auth.uid()` yang cocok dengan admin user id, atau kolom `is_admin`).
-- Tabel `messages`: **INSERT** terbuka untuk publik (agar visitor bisa kirim pesan tanpa login), **SELECT/UPDATE/DELETE** hanya admin.
-- Supabase Storage bucket untuk gambar project & CV: **read public**, **write hanya admin**.
+- Semua tabel kecuali `messages`: **INSERT/UPDATE/DELETE** hanya untuk role `authenticated` yang merupakan admin, dicek via `auth.uid()` = `(select id from profile where is_admin = true)`.
+- Tabel `messages`: **INSERT** terbuka untuk publik (anon & authenticated, agar visitor bisa kirim pesan tanpa login), **SELECT/UPDATE/DELETE** hanya admin.
+- Supabase Storage bucket (`project-images`, `cv`): **read public**, **write hanya admin** (policies pada `storage.objects`).
 
 ## 8. Non-Functional Requirements
 

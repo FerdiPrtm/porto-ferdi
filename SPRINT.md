@@ -16,7 +16,7 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 - [x] Setup `.env.local` sesuai format di `AGENT.md`
 - [x] Buat `lib/supabase/client.ts` dan `lib/supabase/server.ts` (+ `middleware.ts` helper)
 - [x] Struktur folder awal sesuai `AGENT.md` (route groups `(public)`, `(admin)`)
-- [ ] Push repo awal ke GitHub
+- [x] Push repo awal ke GitHub → `https://github.com/FerdiPrtm/porto-ferdi.git` (branch `master`)
 
 **Definition of Done:** `next dev` jalan tanpa error, koneksi ke Supabase berhasil (test query sederhana).
 
@@ -26,11 +26,11 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** semua tabel di skema PRD section 6 dibuat dengan RLS aktif.
 
-- [ ] Buat tabel: `profile`, `projects`, `skills`, `experiences`, `educations`, `messages`
-- [ ] Buat RLS policy sesuai PRD section 7 (public read, admin write, `messages` insert publik)
-- [ ] Buat Supabase Storage bucket untuk gambar project & CV (public read, admin write)
-- [ ] Buat 1 akun admin di Supabase Auth
-- [ ] Uji manual: coba insert/update sebagai anon (harus gagal kecuali `messages`), sebagai admin (harus berhasil)
+- [x] Buat tabel: `profile`, `projects`, `skills`, `experiences`, `educations`, `messages`
+- [x] Buat RLS policy sesuai PRD section 7 (public read, admin write, `messages` insert publik)
+- [x] Buat Supabase Storage bucket untuk gambar project & CV (public read, admin write)
+- [x] Buat 1 akun admin di Supabase Auth (`admin@email.com`)
+- [x] Uji manual: coba insert/update sebagai anon (harus gagal kecuali `messages`), sebagai admin (harus berhasil)
 
 **Definition of Done:** semua tabel ada, RLS terverifikasi manual, tidak ada tabel tanpa policy.
 
