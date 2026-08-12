@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/e2e-seed.mjs
 
 # next.js
 /.next/

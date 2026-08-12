@@ -94,11 +94,11 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** halaman publik utama tampil dengan data real dari Supabase.
 
-- [ ] Halaman Home (hero, ringkasan, CTA)
-- [ ] Halaman Projects (list/grid, filter tech stack opsional)
-- [ ] Halaman Project detail (`/projects/[slug]`)
-- [ ] Halaman About (bio, skills, timeline experience & education, tombol download CV)
-- [ ] Semua data diambil via Server Component (bukan client fetch)
+- [x] Halaman Home (hero, ringkasan, CTA)
+- [x] Halaman Projects (list/grid, filter tech stack opsional)
+- [x] Halaman Project detail (`/projects/[slug]`)
+- [x] Halaman About (bio, skills, timeline experience & education, tombol download CV)
+- [x] Semua data diambil via Server Component (bukan client fetch)
 
 **Definition of Done:** semua halaman publik menampilkan data yang diinput lewat admin panel, tanpa hardcode.
 
