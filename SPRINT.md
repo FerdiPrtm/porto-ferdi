@@ -135,10 +135,17 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** live di production.
 
-- [ ] Setup project di Vercel, hubungkan repo
-- [ ] Set environment variables production di Vercel
-- [ ] Deploy & smoke test semua fitur di production URL
-- [ ] Setup custom domain (jika ada)
+- [x] Setup project di Vercel, hubungkan repo (project `porto-ferdi`, git terhubung ke `FerdiPrtm/porto-ferdi`, branch `master`)
+- [x] Set environment variables production di Vercel (Supabase URL/anon/service role + `NEXT_PUBLIC_SITE_URL` = `https://portofolio-ferdi-pratama.dev`)
+- [ ] Deploy & smoke test semua fitur di production URL — deployed, tapi butuh DNS custom domain agar bisa diakses publik (URL `*.vercel.app` terproteksi SSO team, `all_except_custom_domains`)
+- [ ] Setup custom domain (`portofolio-ferdi-pratama.dev`) — ter-attach ke project, **menunggu DNS A record dari user**
+
+**Langkah tersisa (user):** set A record di provider DNS domain `.dev`:
+```
+A  @  216.198.79.1
+A  @  64.29.17.1
+```
+Setelah propagate, jalankan smoke test di `https://portofolio-ferdi-pratama.dev`.
 
 **Definition of Done:** website live, admin panel bisa diakses dan berfungsi di production, tidak ada env/secret yang bocor ke client.
 
