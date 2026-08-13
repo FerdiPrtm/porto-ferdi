@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ExternalLink, FolderGit2 } from "lucide-react";
 import { getProjectBySlug } from "@/lib/data";
 import { formatDate } from "@/lib/format";
+import { openGraphMeta, siteName } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 3600;
@@ -16,9 +17,27 @@ export async function generateMetadata({
   if (!project) {
     return { title: "Project Tidak Ditemukan" };
   }
+  const description =
+    project.description ?? `Project ${project.title} yang pernah dikerjakan.`;
+  const images = project.image_url
+    ? [project.image_url]
+    : openGraphMeta("/projects")?.images;
   return {
     title: project.title,
-    description: project.description ?? undefined,
+    description,
+    openGraph: openGraphMeta(`/projects/${project.slug}`, {
+      title: project.title,
+      description,
+      type: "article",
+      images,
+    }),
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description,
+      images,
+      site: siteName,
+    },
   };
 }
 

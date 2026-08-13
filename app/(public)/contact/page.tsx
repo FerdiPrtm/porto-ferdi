@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/public/contact-form";
+import { openGraphMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontak",
   description: "Hubungi saya untuk kolaborasi atau pertanyaan.",
+  openGraph: openGraphMeta("/contact"),
 };
 
 export default function ContactPage() {

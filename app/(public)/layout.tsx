@@ -52,7 +52,7 @@ export default async function PublicLayout({
   return (
     <div className="flex min-h-svh flex-col">
       <header className="sticky top-0 z-10 border-b bg-background/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-3">
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-3">
           <Link href="/" className="text-sm font-semibold tracking-tight">
             {profile?.full_name || "Portfolio"}
           </Link>

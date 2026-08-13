@@ -15,7 +15,7 @@ export function HeaderNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-1" aria-label="Navigasi utama">
+    <nav className="flex flex-wrap items-center gap-1" aria-label="Navigasi utama">
       {links.map((link) => {
         const active =
           link.href === "/"

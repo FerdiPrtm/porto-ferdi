@@ -121,11 +121,11 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** siap rilis.
 
-- [ ] Responsive check semua halaman (mobile, tablet, desktop)
-- [ ] Meta tags dinamis per halaman project, Open Graph image
-- [ ] `sitemap.xml` dan `robots.txt`
-- [ ] Loading states & error states (skeleton/spinner) di halaman yang fetch data
-- [ ] Aksesibilitas dasar (alt text, kontras, semantic HTML)
+- [x] Responsive check semua halaman (mobile, tablet, desktop) — review kode + perbaiki overflow header nav
+- [x] Meta tags dinamis per halaman project, Open Graph image
+- [x] `sitemap.xml` dan `robots.txt`
+- [x] Loading states & error states (skeleton/spinner) di halaman yang fetch data
+- [x] Aksesibilitas dasar (alt text, kontras, semantic HTML)
 
 **Definition of Done:** lolos self-review checklist di `AGENT.md`, tidak ada console error, responsive di semua breakpoint utama.
 

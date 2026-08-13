@@ -1,12 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getFeaturedProjects, getProfile } from "@/lib/data";
 import { truncate } from "@/lib/format";
+import { openGraphMeta } from "@/lib/site";
 import { ProjectCard } from "@/components/public/project-card";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Beranda",
+  description:
+    "Halaman utama portofolio — project unggulan, ringkasan, dan ajakan untuk berkolaborasi.",
+  openGraph: openGraphMeta("/"),
 };
 
 export default async function HomePage() {

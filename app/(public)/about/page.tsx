@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FileText } from "lucide-react";
+import type { Metadata } from "next";
 import {
   getEducations,
   getExperiences,
@@ -7,11 +8,13 @@ import {
   getSkills,
 } from "@/lib/data";
 import { formatDateRange } from "@/lib/format";
+import { openGraphMeta } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Tentang Saya",
   description: "Profil, keahlian, pengalaman, dan pendidikan.",
+  openGraph: openGraphMeta("/about"),
 };
 
 export default async function AboutPage() {

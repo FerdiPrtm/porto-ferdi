@@ -1,11 +1,14 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getProjects } from "@/lib/data";
+import { openGraphMeta } from "@/lib/site";
 import { ProjectCard } from "@/components/public/project-card";
 import { cn } from "@/lib/utils";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Projects",
   description: "Kumpulan project yang pernah saya kerjakan.",
+  openGraph: openGraphMeta("/projects"),
 };
 
 export default async function ProjectsPage({
