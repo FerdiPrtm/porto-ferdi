@@ -58,6 +58,9 @@ export default async function HomePage() {
           <Button variant="ghost" render={<Link href="/about" />}>
             Tentang Saya
           </Button>
+          <Button variant="outline" render={<Link href="/contact" />}>
+            Hubungi Saya
+          </Button>
         </div>
       </section>
 

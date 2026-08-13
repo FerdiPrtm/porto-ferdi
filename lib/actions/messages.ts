@@ -3,6 +3,36 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/supabase/guard";
+import { createPublicClient } from "@/lib/supabase/public";
+import {
+  contactSchema,
+  type ContactInput,
+} from "@/lib/validations/contact";
+
+export async function sendMessage(
+  values: ContactInput
+): Promise<{ success: true } | { success: false; error: string }> {
+  const parsed = contactSchema.safeParse(values);
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: parsed.error.issues[0]?.message ?? "Input tidak valid.",
+    };
+  }
+
+  const supabase = createPublicClient();
+  const { error } = await supabase.from("messages").insert({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    message: parsed.data.message,
+  });
+
+  if (error) {
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
+}
 
 export async function setMessageRead(id: string, isRead: boolean) {
   const supabase = await requireAdmin();

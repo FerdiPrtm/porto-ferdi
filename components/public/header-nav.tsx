@@ -8,6 +8,7 @@ const links = [
   { href: "/", label: "Beranda" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "Tentang" },
+  { href: "/contact", label: "Kontak" },
 ];
 
 export function HeaderNav() {

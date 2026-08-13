@@ -108,10 +108,10 @@ Asumsi: 1 sprint = 1 sesi kerja fokus (bukan durasi kalender tetap), dikerjakan 
 
 **Tujuan:** visitor bisa kirim pesan.
 
-- [ ] Form contact (nama, email, pesan) dengan validasi Zod
-- [ ] Server action insert ke tabel `messages`
-- [ ] Feedback UI sukses/gagal ke user
-- [ ] (Opsional) notifikasi email ke admin saat ada pesan baru
+- [x] Form contact (nama, email, pesan) dengan validasi Zod
+- [x] Server action insert ke tabel `messages`
+- [x] Feedback UI sukses/gagal ke user
+- [ ] (Opsional) notifikasi email ke admin saat ada pesan baru — butuh layanan email (mis. Resend), belum dibuat
 
 **Definition of Done:** pesan yang dikirim visitor muncul di admin inbox, validasi & error handling jalan.
 
