@@ -78,98 +78,104 @@ export default async function HomePage() {
           <div className="absolute left-[-80px] top-1/2 size-[320px] rounded-full bg-sky-500/15 blur-[120px]" />
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-20 pt-24 text-center sm:pt-28">
-          <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-20 sm:pt-24 lg:grid-cols-[1fr_auto] lg:gap-20">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-muted-foreground">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+              </span>
+              {tagline}
             </span>
-            {tagline}
-          </span>
 
-          <div className="mb-8">
-            {profile?.avatar_url ? (
-              <div className="rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 p-[3px]">
+            <div className="space-y-5">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+                Halo, saya{" "}
+                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  {name}
+                </span>
+              </h1>
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {bio ? truncate(bio, 260) : "Portofolio pribadi saya."}
+              </p>
+            </div>
+
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <Button
+                size="lg"
+                render={<Link href="/projects" />}
+                className="gap-2"
+              >
+                Lihat Project
+                <ArrowRight className="size-4" />
+              </Button>
+              {profile?.cv_url && (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  render={
+                    <a
+                      href={profile.cv_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
+                  className="gap-2"
+                >
+                  <Download className="size-4" />
+                  Download CV
+                </Button>
+              )}
+              <Button
+                size="lg"
+                variant="ghost"
+                render={<Link href="/contact" />}
+                className="gap-2"
+              >
+                <Mail className="size-4" />
+                Hubungi Saya
+              </Button>
+            </div>
+
+            <div className="mt-12 grid w-full max-w-xl grid-cols-3 gap-3">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-5"
+                >
+                  <stat.icon className="mx-auto mb-2 size-5 text-primary lg:mx-0" />
+                  <p className="text-2xl font-bold tracking-tight">
+                    {stat.value}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative flex justify-center lg:justify-end">
+            <div
+              aria-hidden
+              className="absolute inset-0 m-auto size-64 rounded-full bg-indigo-500/30 blur-[90px] sm:size-80"
+            />
+            <div className="relative rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 p-[4px] shadow-2xl shadow-indigo-500/30">
+              {profile?.avatar_url ? (
                 <Image
                   src={profile.avatar_url}
                   alt={name}
-                  width={128}
-                  height={128}
+                  width={280}
+                  height={280}
                   priority
-                  className="size-28 rounded-full border-4 border-background object-cover sm:size-32"
+                  className="size-48 rounded-full border-8 border-background object-cover sm:size-64"
                 />
-              </div>
-            ) : (
-              <div className="flex size-28 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-3xl font-bold text-white shadow-2xl shadow-indigo-500/30 sm:size-32">
-                {getInitials(name)}
-              </div>
-            )}
-          </div>
-
-          <div className="space-y-5">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              Halo, saya{" "}
-              <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                {name}
-              </span>
-            </h1>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {bio ? truncate(bio, 260) : "Portofolio pribadi saya."}
-            </p>
-          </div>
-
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Button
-              size="lg"
-              render={<Link href="/projects" />}
-              className="gap-2"
-            >
-              Lihat Project
-              <ArrowRight className="size-4" />
-            </Button>
-            {profile?.cv_url && (
-              <Button
-                size="lg"
-                variant="outline"
-                render={
-                  <a
-                    href={profile.cv_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-                className="gap-2"
-              >
-                <Download className="size-4" />
-                Download CV
-              </Button>
-            )}
-            <Button
-              size="lg"
-              variant="ghost"
-              render={<Link href="/contact" />}
-              className="gap-2"
-            >
-              <Mail className="size-4" />
-              Hubungi Saya
-            </Button>
-          </div>
-
-          <div className="mt-14 grid w-full max-w-xl grid-cols-3 gap-3">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-5"
-              >
-                <stat.icon className="mx-auto mb-2 size-5 text-primary" />
-                <p className="text-2xl font-bold tracking-tight">
-                  {stat.value}
-                </p>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+              ) : (
+                <div className="flex size-48 items-center justify-center rounded-full border-8 border-background bg-gradient-to-br from-indigo-600 to-violet-700 text-6xl font-bold text-white sm:size-64">
+                  {getInitials(name)}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
