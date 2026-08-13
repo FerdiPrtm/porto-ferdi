@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { ExternalLink, FolderGit2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink, FolderGit2 } from "lucide-react";
 import { getProjectBySlug } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import { openGraphMeta, siteName } from "@/lib/site";
@@ -53,18 +54,28 @@ export default async function ProjectDetailPage({
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-14">
+      <Link
+        href="/projects"
+        className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="size-4" />
+        Semua Project
+      </Link>
+
       <div className="space-y-3">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs font-medium uppercase tracking-widest text-primary">
           {project.created_at
             ? formatDate(project.created_at)
             : project.slug}
         </p>
-        <h1 className="text-3xl font-bold tracking-tight">{project.title}</h1>
+        <h1 className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+          {project.title}
+        </h1>
         <div className="flex flex-wrap gap-2">
           {(project.tech_stack ?? []).map((tech: string) => (
             <span
               key={tech}
-              className="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground"
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-muted-foreground"
             >
               {tech}
             </span>
@@ -72,7 +83,7 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-muted ring-1 ring-foreground/10">
+      <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-muted">
         {project.image_url ? (
           <Image
             src={project.image_url}
@@ -83,13 +94,13 @@ export default async function ProjectDetailPage({
             className="object-cover"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-muted-foreground">
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-indigo-500/15 to-violet-600/15 text-primary/60">
             <FolderGit2 className="size-10" />
           </div>
         )}
       </div>
 
-      <p className="whitespace-pre-wrap leading-relaxed">
+      <p className="whitespace-pre-wrap leading-relaxed text-muted-foreground">
         {project.description || "Belum ada deskripsi untuk project ini."}
       </p>
 
@@ -99,8 +110,9 @@ export default async function ProjectDetailPage({
             render={
               <a href={project.demo_url} target="_blank" rel="noopener noreferrer" />
             }
+            className="gap-2"
           >
-            <ExternalLink />
+            <ExternalLink className="size-4" />
             Lihat Demo
           </Button>
         )}
@@ -110,8 +122,9 @@ export default async function ProjectDetailPage({
             render={
               <a href={project.repo_url} target="_blank" rel="noopener noreferrer" />
             }
+            className="gap-2"
           >
-            <FolderGit2 />
+            <FolderGit2 className="size-4" />
             Source Code
           </Button>
         )}

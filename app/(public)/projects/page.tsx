@@ -34,9 +34,14 @@ export default async function ProjectsPage({
     : projects;
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-6 py-14">
-      <div className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-16">
+      <div className="mb-10 space-y-2">
+        <p className="text-xs font-medium uppercase tracking-widest text-primary">
+          Portofolio
+        </p>
+        <h1 className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+          Projects
+        </h1>
         <p className="text-muted-foreground">
           Berikut project yang pernah saya kerjakan.
         </p>
@@ -47,10 +52,10 @@ export default async function ProjectsPage({
           <Link
             href="/projects"
             className={cn(
-              "rounded-full border px-3 py-1 text-sm transition-colors",
+              "rounded-full border px-3.5 py-1.5 text-sm transition-colors",
               !tech
                 ? "border-primary bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground"
+                : "border-white/10 text-muted-foreground hover:text-foreground"
             )}
           >
             Semua
@@ -60,10 +65,10 @@ export default async function ProjectsPage({
               key={item}
               href={`/projects?tech=${encodeURIComponent(item)}`}
               className={cn(
-                "rounded-full border px-3 py-1 text-sm transition-colors",
+                "rounded-full border px-3.5 py-1.5 text-sm transition-colors",
                 tech === item
                   ? "border-primary bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "border-white/10 text-muted-foreground hover:text-foreground"
               )}
             >
               {item}
@@ -77,7 +82,7 @@ export default async function ProjectsPage({
           Belum ada project untuk ditampilkan.
         </p>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
