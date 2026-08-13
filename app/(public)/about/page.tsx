@@ -10,6 +10,7 @@ import {
 import { formatDateRange } from "@/lib/format";
 import { openGraphMeta } from "@/lib/site";
 import { Button } from "@/components/ui/button";
+import { SkillIcon } from "@/components/public/skill-icon";
 
 export const metadata: Metadata = {
   title: "Tentang Saya",
@@ -117,8 +118,11 @@ export default async function AboutPage() {
                   {items.map((skill) => (
                     <li key={skill.id}>
                       <div className="flex items-center justify-between text-sm">
-                        <span className="flex items-center gap-2">
-                          {skill.icon && <span>{skill.icon}</span>}
+                        <span className="flex items-center gap-2.5">
+                          <SkillIcon
+                            name={skill.name}
+                            className="text-primary"
+                          />
                           {skill.name}
                         </span>
                         <span className="text-xs text-muted-foreground">

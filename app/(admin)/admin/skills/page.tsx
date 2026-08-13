@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/supabase/guard";
 import { DeleteButton } from "@/components/admin/delete-button";
 import { deleteSkill } from "@/lib/actions/skills";
+import { SkillIcon } from "@/components/public/skill-icon";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
@@ -53,8 +54,13 @@ export default async function AdminSkillsPage() {
               {skills.map((skill) => (
                 <tr key={skill.id} className="border-b last:border-0">
                   <td className="px-4 py-2 font-medium">
-                    {skill.icon && `${skill.icon} `}
-                    {skill.name}
+                    <span className="inline-flex items-center gap-2">
+                      <SkillIcon
+                        name={skill.name}
+                        className="text-primary"
+                      />
+                      {skill.name}
+                    </span>
                   </td>
                   <td className="px-4 py-2 text-muted-foreground">
                     {skill.category ?? "—"}
