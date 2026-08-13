@@ -32,6 +32,8 @@ export async function createExperience(
   }
 
   revalidatePath("/admin/experiences");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/experiences");
 }
 
@@ -63,6 +65,8 @@ export async function updateExperience(
   }
 
   revalidatePath("/admin/experiences");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/experiences");
 }
 
@@ -83,5 +87,7 @@ export async function deleteExperience(
   }
 
   revalidatePath("/admin/experiences");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/experiences");
 }

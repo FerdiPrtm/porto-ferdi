@@ -31,6 +31,8 @@ export async function createEducation(
   }
 
   revalidatePath("/admin/educations");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/educations");
 }
 
@@ -61,6 +63,8 @@ export async function updateEducation(
   }
 
   revalidatePath("/admin/educations");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/educations");
 }
 
@@ -78,5 +82,7 @@ export async function deleteEducation(
   }
 
   revalidatePath("/admin/educations");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/educations");
 }

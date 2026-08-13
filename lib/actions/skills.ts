@@ -28,6 +28,8 @@ export async function createSkill(
   }
 
   revalidatePath("/admin/skills");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/skills");
 }
 
@@ -58,6 +60,8 @@ export async function updateSkill(
   }
 
   revalidatePath("/admin/skills");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/skills");
 }
 
@@ -75,5 +79,7 @@ export async function deleteSkill(
   }
 
   revalidatePath("/admin/skills");
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/skills");
 }

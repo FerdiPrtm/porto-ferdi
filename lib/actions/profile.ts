@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/supabase/guard";
 import { profileSchema, type ProfileInput } from "@/lib/validations/profile";
@@ -41,5 +42,7 @@ export async function updateProfile(
     return { error: error.message };
   }
 
+  revalidatePath("/");
+  revalidatePath("/about");
   redirect("/admin/profile");
 }
