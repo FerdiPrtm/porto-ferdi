@@ -56,10 +56,10 @@ export default async function AdminExperiencesPage() {
           Belum ada pengalaman. Klik &quot;Tambah Pengalaman&quot; untuk mulai.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border">
+        <div className="overflow-x-auto overflow-hidden rounded-xl border border-white/10">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b bg-muted/50 text-left">
+              <tr className="border-b bg-white/[0.03] text-left">
                 <th className="px-4 py-2 font-medium">Posisi</th>
                 <th className="px-4 py-2 font-medium">Perusahaan</th>
                 <th className="px-4 py-2 font-medium">Periode</th>

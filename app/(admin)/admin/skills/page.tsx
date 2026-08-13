@@ -39,10 +39,10 @@ export default async function AdminSkillsPage() {
           Belum ada skill. Klik &quot;Tambah Skill&quot; untuk mulai.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border">
+        <div className="overflow-x-auto overflow-hidden rounded-xl border border-white/10">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b bg-muted/50 text-left">
+              <tr className="border-b bg-white/[0.03] text-left">
                 <th className="px-4 py-2 font-medium">Nama</th>
                 <th className="px-4 py-2 font-medium">Kategori</th>
                 <th className="px-4 py-2 font-medium">Level</th>

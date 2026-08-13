@@ -50,8 +50,10 @@ export default async function AdminMessagesPage() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={`rounded-lg border p-4 ${
-                message.is_read ? "" : "border-primary/40 bg-muted/30"
+              className={`rounded-2xl border p-5 ${
+                message.is_read
+                  ? "border-white/10 bg-white/[0.03]"
+                  : "border-primary/40 bg-primary/10"
               }`}
             >
               <div className="flex items-start justify-between gap-4">
