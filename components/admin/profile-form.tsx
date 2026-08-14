@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { useRef } from "react";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateProfile } from "@/lib/actions/profile";
+import { deleteAvatar, updateProfile } from "@/lib/actions/profile";
 import { uploadFile } from "@/lib/supabase/upload";
 import { profileSchema, type ProfileInput } from "@/lib/validations/profile";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,7 @@ export function ProfileForm({ profile }: { profile: ProfileRecord }) {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const [uploading, setUploading] = useState<"avatar" | "cv" | null>(null);
+  const [deletingAvatar, setDeletingAvatar] = useState(false);
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const cvInputRef = useRef<HTMLInputElement>(null);
 
@@ -80,6 +81,21 @@ export function ProfileForm({ profile }: { profile: ProfileRecord }) {
 
   const avatarUrl = getValues("avatarUrl");
   const cvUrl = getValues("cvUrl");
+
+  function handleDeleteAvatar() {
+    if (!window.confirm("Hapus foto profil? Tindakan tidak dapat dibatalkan.")) {
+      return;
+    }
+    setError(null);
+    setDeletingAvatar(true);
+    startTransition(async () => {
+      const result = await deleteAvatar();
+      if (result?.error) {
+        setError(result.error);
+        setDeletingAvatar(false);
+      }
+    });
+  }
 
   function onSubmit(values: ProfileInput) {
     setError(null);
@@ -161,14 +177,25 @@ export function ProfileForm({ profile }: { profile: ProfileRecord }) {
               {uploading === "avatar" ? "Uploading..." : "Upload Foto"}
             </Button>
             {avatarUrl && (
-              <a
-                href={avatarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="max-w-[200px] truncate text-sm text-muted-foreground underline"
-              >
-                {avatarUrl}
-              </a>
+              <>
+                <a
+                  href={avatarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="max-w-[200px] truncate text-sm text-muted-foreground underline"
+                >
+                  {avatarUrl}
+                </a>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="sm"
+                  disabled={deletingAvatar || uploading !== null}
+                  onClick={handleDeleteAvatar}
+                >
+                  {deletingAvatar ? "Menghapus..." : "Hapus Foto"}
+                </Button>
+              </>
             )}
           </div>
           <input type="hidden" {...register("avatarUrl")} />
