@@ -16,7 +16,7 @@ export type PublicProject = {
 
 export function ProjectCard({ project }: { project: PublicProject }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-indigo-500/10">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-orange-500/10">
       <Link
         href={`/projects/${project.slug}`}
         className="relative block aspect-video w-full overflow-hidden bg-muted"
@@ -30,7 +30,7 @@ export function ProjectCard({ project }: { project: PublicProject }) {
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-indigo-500/15 to-violet-600/15 text-primary/60">
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-amber-500/15 to-orange-600/15 text-primary/60">
             <FolderGit2 className="size-10 transition-transform duration-500 group-hover:scale-110" />
           </div>
         )}

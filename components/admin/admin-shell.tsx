@@ -42,7 +42,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             href="/admin/dashboard"
             className="flex items-center gap-2.5 font-semibold tracking-tight"
           >
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 text-xs font-bold text-white">
               A
             </span>
             Panel Admin
