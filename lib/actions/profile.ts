@@ -46,3 +46,48 @@ export async function updateProfile(
   revalidatePath("/about");
   redirect("/admin/profile");
 }
+
+export async function deleteAvatar(): Promise<{ error: string } | null> {
+  const supabase = await requireAdmin();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return { error: "Sesi berakhir, silakan login ulang." };
+  }
+
+  const { data: profile } = await supabase
+    .from("profile")
+    .select("avatar_url")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  const avatarUrl = profile?.avatar_url;
+  if (avatarUrl) {
+    const marker = "/object/public/";
+    const idx = avatarUrl.indexOf(marker);
+    if (idx !== -1) {
+      const path = avatarUrl.slice(idx + marker.length).split("?")[0];
+      const slash = path.indexOf("/");
+      if (slash !== -1) {
+        const bucket = path.slice(0, slash);
+        const objectPath = path.slice(slash + 1);
+        await supabase.storage.from(bucket).remove([objectPath]);
+      }
+    }
+  }
+
+  const { error } = await supabase
+    .from("profile")
+    .update({ avatar_url: null })
+    .eq("id", user.id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/about");
+  redirect("/admin/profile");
+}
