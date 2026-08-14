@@ -177,26 +177,24 @@ export function ProfileForm({ profile }: { profile: ProfileRecord }) {
               {uploading === "avatar" ? "Uploading..." : "Upload Foto"}
             </Button>
             {avatarUrl && (
-              <>
-                <a
-                  href={avatarUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="max-w-[200px] truncate text-sm text-muted-foreground underline"
-                >
-                  {avatarUrl}
-                </a>
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="sm"
-                  disabled={deletingAvatar || uploading !== null}
-                  onClick={handleDeleteAvatar}
-                >
-                  {deletingAvatar ? "Menghapus..." : "Hapus Foto"}
-                </Button>
-              </>
+              <a
+                href={avatarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="max-w-[200px] truncate text-sm text-muted-foreground underline"
+              >
+                {avatarUrl}
+              </a>
             )}
+            <Button
+              type="button"
+              variant="destructive"
+              size="sm"
+              disabled={!avatarUrl || deletingAvatar || uploading !== null}
+              onClick={handleDeleteAvatar}
+            >
+              {deletingAvatar ? "Menghapus..." : "Hapus Foto"}
+            </Button>
           </div>
           <input type="hidden" {...register("avatarUrl")} />
         </div>
