@@ -68,7 +68,7 @@ export default async function ProjectDetailPage({
             ? formatDate(project.created_at)
             : project.slug}
         </p>
-        <h1 className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+        <h1 className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
           {project.title}
         </h1>
         <div className="flex flex-wrap gap-2">
@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({
             className="object-cover"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-indigo-500/15 to-violet-600/15 text-primary/60">
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-amber-500/15 to-orange-600/15 text-primary/60">
             <FolderGit2 className="size-10" />
           </div>
         )}

@@ -74,8 +74,8 @@ export default async function HomePage() {
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-[-220px] size-[640px] -translate-x-1/2 rounded-full bg-primary/25 blur-[140px]" />
-          <div className="absolute right-[-80px] top-24 size-[360px] rounded-full bg-violet-600/20 blur-[120px]" />
-          <div className="absolute left-[-80px] top-1/2 size-[320px] rounded-full bg-sky-500/15 blur-[120px]" />
+          <div className="absolute right-[-80px] top-24 size-[360px] rounded-full bg-orange-500/20 blur-[120px]" />
+          <div className="absolute left-[-80px] top-1/2 size-[320px] rounded-full bg-amber-400/15 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-20 sm:pt-24 lg:grid-cols-[1fr_auto] lg:gap-20">
@@ -91,7 +91,7 @@ export default async function HomePage() {
             <div className="space-y-5">
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
                 Halo, saya{" "}
-                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-transparent">
                   {name}
                 </span>
               </h1>
@@ -158,9 +158,9 @@ export default async function HomePage() {
           <div className="relative flex justify-center lg:justify-end">
             <div
               aria-hidden
-              className="absolute inset-0 m-auto size-64 rounded-full bg-indigo-500/30 blur-[90px] sm:size-80"
+              className="absolute inset-0 m-auto size-64 rounded-full bg-orange-500/30 blur-[90px] sm:size-80"
             />
-            <div className="relative rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 p-[4px] shadow-2xl shadow-indigo-500/30">
+            <div className="relative rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-orange-600 p-[4px] shadow-2xl shadow-orange-500/30">
               {profile?.avatar_url ? (
                 <Image
                   src={profile.avatar_url}
@@ -171,7 +171,7 @@ export default async function HomePage() {
                   className="size-48 rounded-full border-8 border-background object-cover sm:size-64"
                 />
               ) : (
-                <div className="flex size-48 items-center justify-center rounded-full border-8 border-background bg-gradient-to-br from-indigo-600 to-violet-700 text-6xl font-bold text-white sm:size-64">
+                <div className="flex size-48 items-center justify-center rounded-full border-8 border-background bg-gradient-to-br from-amber-500 to-orange-600 text-6xl font-bold text-white sm:size-64">
                   {getInitials(name)}
                 </div>
               )}
@@ -221,7 +221,7 @@ export default async function HomePage() {
                             key={i}
                             className={`h-1.5 flex-1 rounded-full ${
                               i < skill.level
-                                ? "bg-gradient-to-r from-indigo-500 to-violet-500"
+                                ? "bg-gradient-to-r from-amber-500 to-orange-500"
                                 : "bg-white/10"
                             }`}
                           />
@@ -305,14 +305,14 @@ export default async function HomePage() {
 
       {/* ---------- CTA ---------- */}
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-indigo-600/20 via-violet-600/10 to-background px-8 py-14 text-center">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-background px-8 py-14 text-center">
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-violet-500/30 blur-[80px]"
+            className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-orange-500/30 blur-[80px]"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-indigo-500/30 blur-[80px]"
+            className="pointer-events-none absolute -bottom-16 -left-16 size-56 rounded-full bg-orange-500/30 blur-[80px]"
           />
           <h2 className="relative text-2xl font-bold tracking-tight sm:text-3xl">
             Tertarik bekerja sama?

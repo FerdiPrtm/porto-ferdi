@@ -39,7 +39,7 @@ export default async function ProjectsPage({
         <p className="text-xs font-medium uppercase tracking-widest text-primary">
           Portofolio
         </p>
-        <h1 className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+        <h1 className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
           Projects
         </h1>
         <p className="text-muted-foreground">

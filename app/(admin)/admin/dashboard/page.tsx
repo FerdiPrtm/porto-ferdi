@@ -89,19 +89,19 @@ export default async function AdminDashboardPage() {
       label: "Total Project",
       value: projectCount ?? 0,
       icon: FolderGit2,
-      className: "from-indigo-500 to-violet-600",
+      className: "from-amber-500 to-orange-600",
     },
     {
       label: "Total Skill",
       value: skillCount ?? 0,
       icon: Cpu,
-      className: "from-violet-500 to-fuchsia-600",
+      className: "from-orange-500 to-red-500",
     },
     {
       label: "Pesan Belum Dibaca",
       value: unreadCount ?? 0,
       icon: Inbox,
-      className: "from-sky-500 to-indigo-600",
+      className: "from-yellow-500 to-amber-600",
     },
   ];
 
@@ -142,7 +142,7 @@ export default async function AdminDashboardPage() {
           <Link
             key={item.href}
             href={item.href}
-            className="group flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-indigo-500/10"
+            className="group flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-orange-500/10"
           >
             <div className="flex items-center justify-between">
               <span className="inline-flex size-10 items-center justify-center rounded-lg bg-primary/15 text-primary">

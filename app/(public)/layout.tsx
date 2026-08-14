@@ -70,7 +70,7 @@ export default async function PublicLayout({
             href="/"
             className="flex items-center gap-2.5 text-sm font-semibold tracking-tight"
           >
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-lg shadow-indigo-500/25">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 text-xs font-bold text-white shadow-lg shadow-orange-500/25">
               {getInitials(name)}
             </span>
             {name}

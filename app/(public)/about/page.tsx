@@ -51,7 +51,7 @@ export default async function AboutPage() {
   return (
     <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-16 px-6 py-16">
       <section className="flex flex-col items-center gap-6 text-center">
-        <div className="rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 p-[3px]">
+        <div className="rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-orange-600 p-[3px]">
           {profile?.avatar_url ? (
             <Image
               src={profile.avatar_url}
@@ -61,13 +61,13 @@ export default async function AboutPage() {
               className="size-28 rounded-full border-4 border-background object-cover sm:size-32"
             />
           ) : (
-            <div className="flex size-28 items-center justify-center rounded-full border-4 border-background bg-gradient-to-br from-indigo-500 to-violet-600 text-3xl font-bold text-white sm:size-32">
+            <div className="flex size-28 items-center justify-center rounded-full border-4 border-background bg-gradient-to-br from-amber-500 to-orange-600 text-3xl font-bold text-white sm:size-32">
               {getInitials(name)}
             </div>
           )}
         </div>
         <div className="space-y-2">
-          <h1 className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
+          <h1 className="bg-gradient-to-r from-amber-300 via-orange-400 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
             {name}
           </h1>
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
@@ -135,7 +135,7 @@ export default async function AboutPage() {
                             key={i}
                             className={`h-1.5 flex-1 rounded-full ${
                               i < skill.level
-                                ? "bg-gradient-to-r from-indigo-500 to-violet-500"
+                                ? "bg-gradient-to-r from-amber-500 to-orange-500"
                                 : "bg-white/10"
                             }`}
                           />
